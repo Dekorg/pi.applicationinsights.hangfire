@@ -7,8 +7,10 @@
     <Company>PI Applications A/S</Company>
     <Authors>PI Applications A/S</Authors>
     <Product />
-    <PackageProjectUrl>https://github.com/PI-Applications/pi.applicationinsights</PackageProjectUrl>
-    <PackageTags>ApplicationInsights Hangfire</PackageTags>
+    <PackageProjectUrl>https://github.com/PI-Applications/pi.applicationinsights.hangfire</PackageProjectUrl>
+    <PackageTags>Azure ApplicationInsights Hangfire Monitor</PackageTags>
+    <Description>Use this package if you want to monitor status for a Hangfire instance with Azure Application Insights.</Description>
+    <PackageReleaseNotes />
   </PropertyGroup>
 
   <ItemGroup>

@@ -2,7 +2,7 @@
 
 ![Build status from VSTS](https://pi-applications-dk.visualstudio.com/_apis/public/build/definitions/8c43066a-ced2-41f9-822b-b5a7154a9b31/56/badge)
 
-Use this package is you want to monitor status for a Hangfire instance.
+Use this package if you want to monitor status for a Hangfire instance with Azure Application Insights.
 
 The following metrics will be pushed to Azure Application Insights:
 - Enqueued
