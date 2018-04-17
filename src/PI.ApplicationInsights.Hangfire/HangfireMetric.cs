@@ -19,6 +19,13 @@ namespace PI.ApplicationInsights.Hangfire
 
         public HangfireMetric(HangfireMetricOptions options)
         {
+            // Validate required options
+            if (options.TelemetryClient == null)
+                throw new ArgumentNullException(nameof(options.TelemetryClient));
+
+            if (string.IsNullOrEmpty(options.MetricPrefix))
+                throw new ArgumentNullException(nameof(options.MetricPrefix));
+
             _metricPrefix = options.MetricPrefix;
             _telemetryClient = options.TelemetryClient;
 
@@ -39,19 +46,19 @@ namespace PI.ApplicationInsights.Hangfire
                     var stats = _hangfireApi.GetStatistics();
 
                     // Create metrics and push to server
-                    var telemetryEnqueued = new MetricTelemetry(_metricPrefix + "Enqueued", stats.Enqueued);
+                    var telemetryEnqueued = new MetricTelemetry(_metricPrefix + "-enqueued", stats.Enqueued);
                     _telemetryClient.TrackMetric(telemetryEnqueued);
 
-                    var telemetryScheduled = new MetricTelemetry(_metricPrefix + "Scheduled", stats.Scheduled);
+                    var telemetryScheduled = new MetricTelemetry(_metricPrefix + "-scheduled", stats.Scheduled);
                     _telemetryClient.TrackMetric(telemetryScheduled);
 
-                    var telemetryFailed = new MetricTelemetry(_metricPrefix + "Failed", stats.Failed);
+                    var telemetryFailed = new MetricTelemetry(_metricPrefix + "-failed", stats.Failed);
                     _telemetryClient.TrackMetric(telemetryFailed);
 
-                    var telemetryProcessing = new MetricTelemetry(_metricPrefix + "Processing", stats.Processing);
+                    var telemetryProcessing = new MetricTelemetry(_metricPrefix + "-processing", stats.Processing);
                     _telemetryClient.TrackMetric(telemetryProcessing);
 
-                    var telemetryServers = new MetricTelemetry(_metricPrefix + "Servers", stats.Servers);
+                    var telemetryServers = new MetricTelemetry(_metricPrefix + "-servers", stats.Servers);
                     _telemetryClient.TrackMetric(telemetryServers);
 
                     // Wait for next push
