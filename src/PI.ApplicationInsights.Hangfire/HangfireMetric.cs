@@ -19,23 +19,30 @@ namespace PI.ApplicationInsights.Hangfire
 
         public HangfireMetric(HangfireMetricOptions options)
         {
-            // Validate required options
+            // Validate TelemtryClient
             if (options.TelemetryClient == null)
                 throw new ArgumentNullException(nameof(options.TelemetryClient));
 
-            if (string.IsNullOrEmpty(options.MetricPrefix))
-                throw new ArgumentNullException(nameof(options.MetricPrefix));
-
-            _metricPrefix = options.MetricPrefix;
             _telemetryClient = options.TelemetryClient;
 
-            _hangfireApi = JobStorage.Current.GetMonitoringApi();
+            // Validate TelemtryClient
+            if (options.HangfireMonitoringApi == null)
+                throw new ArgumentNullException(nameof(options.HangfireMonitoringApi));
 
+            _hangfireApi = options.HangfireMonitoringApi;
+
+            // Set metric prefix
+            _metricPrefix = options.MetricPrefix;
+
+            if (string.IsNullOrWhiteSpace(_metricPrefix))
+                _metricPrefix = "hangfire";
+                        
+            // Set push interval
             PushInterval = options.PushInterval;
 
             if (PushInterval == null)
                 PushInterval = new TimeSpan(0, 1, 0);
-
+            
             Task.Run(MetricLoopAsync);
         }
 

@@ -25,8 +25,9 @@ HangfireMetric.Use(new HangfireMetricOptions
 Property | Required | Description
 --- | --- | ---
 TelemetryClient | **yes** | Application Insights instance
-MetricPrefix  | **yes** | Prefix for metrics names
-PushInterval | no | Push interval - Default is every minute
+HangfireMonitoringApi  | **yes** | Hangfire MonitoringApi instance
+MetricPrefix  | no | Prefix for metrics names. Default is *hangfire*
+PushInterval | no | Push interval. Default is every minute
 
 ## Metrics
 Name | Description
