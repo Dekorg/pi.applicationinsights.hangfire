@@ -1,4 +1,5 @@
 ﻿using Microsoft.ApplicationInsights;
+using System;
 
 namespace PI.ApplicationInsights.Hangfire
 {
@@ -6,6 +7,6 @@ namespace PI.ApplicationInsights.Hangfire
     {
         public string MetricPrefix { get; set; }
         public TelemetryClient TelemetryClient { get; set; }
-        public int? PushInterval { get; set; }
+        public TimeSpan PushInterval { get; set; }
     }
 }

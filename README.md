@@ -26,7 +26,7 @@ Property | Required | Description
 --- | --- | ---
 TelemetryClient | **yes** | Application Insights instance
 MetricPrefix  | **yes** | Prefix for metrics names
-PushInterval | no | Push interval in milliseconds. Default is 60000 (every minute)
+PushInterval | no | Push interval - Default is every minute
 
 ## Metrics
 Name | Description

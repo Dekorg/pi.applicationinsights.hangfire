@@ -10,12 +10,12 @@ namespace PI.ApplicationInsights.Hangfire
 {
     public sealed class HangfireMetric : IDisposable
     {
-        private bool _isDisposed = false;        
+        private bool _isDisposed = false;
         private TelemetryClient _telemetryClient { get; set; }
         private IMonitoringApi _hangfireApi { get; set; }
         private string _metricPrefix { get; set; }
 
-        public int PushInterval { get; set; }
+        public TimeSpan PushInterval { get; set; }
 
         public HangfireMetric(HangfireMetricOptions options)
         {
@@ -31,7 +31,10 @@ namespace PI.ApplicationInsights.Hangfire
 
             _hangfireApi = JobStorage.Current.GetMonitoringApi();
 
-            PushInterval = options.PushInterval ?? 60000;
+            PushInterval = options.PushInterval;
+
+            if (PushInterval == null)
+                PushInterval = new TimeSpan(0, 1, 0);
 
             Task.Run(MetricLoopAsync);
         }
