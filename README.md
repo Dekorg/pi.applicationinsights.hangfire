@@ -11,13 +11,14 @@ The following metrics will be pushed to Azure Application Insights:
 - Processing
 - Servers
 
-## Example
+## Example of usage
 ```
 HangfireMetric.Use(new HangfireMetricOptions
 {
     MetricPrefix = "hangfire",
-    PushInterval = 120000,
-    TelemetryClient = aiClient
+    PushInterval = new TimeSpan(0, 0, 30),
+    TelemetryClient = aiInstance,
+    HangfireMonitoringApi = hangfireInstance
 });
 ```
 
