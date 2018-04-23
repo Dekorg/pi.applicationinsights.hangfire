@@ -46,3 +46,12 @@ If you use this package with a prefix called **hangfire** then you will get the 
 - *hangfire*-failed
 - *hangfire*-processing
 - *hangfire*-servers
+
+## Azure Monitor Alert
+To setup an Azure Monitor Alert the following search query can be used as inspiration.
+
+````
+customMetrics 
+| where name == "hangfire-failed" 
+| project AggregatedValue = value, bin(timestamp, 1m)  
+````
