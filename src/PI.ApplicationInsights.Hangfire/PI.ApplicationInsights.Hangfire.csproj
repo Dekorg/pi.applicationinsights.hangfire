@@ -1,16 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
     <Version>1.0.0</Version>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Company>PI Applications A/S</Company>
+    <FileVersion>1.0.0</FileVersion>
     <Authors>PI Applications A/S</Authors>
-    <Product />
-    <PackageProjectUrl>https://github.com/PI-Applications/pi.applicationinsights.hangfire</PackageProjectUrl>
-    <PackageTags>Azure ApplicationInsights Hangfire Monitor</PackageTags>
     <Description>Use this package if you want to monitor status for a Hangfire instance with Azure Application Insights.</Description>
-    <PackageReleaseNotes />
+    <Copyright>Copyright (c) 2018 PI Applications A/S</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>PI.ApplicationInsights.Hangfire</PackageId>
+    <PackageVersion>0.0.1</PackageVersion>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageTags>Azure ApplicationInsights Hangfire Monitor</PackageTags>    
+    <PackageProjectUrl>https://github.com/PI-Applications/pi.applicationinsights.hangfire</PackageProjectUrl>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
