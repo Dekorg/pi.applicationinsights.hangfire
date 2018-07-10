@@ -1,6 +1,8 @@
 # PI.ApplicationInsights.Hangfire
 
 ![Build status from VSTS](https://pi-applications-dk.visualstudio.com/_apis/public/build/definitions/8c43066a-ced2-41f9-822b-b5a7154a9b31/56/badge)
+![NuGet](https://img.shields.io/nuget/v/PI.ApplicationInsights.Hangfire.svg)
+![NuGet Pre Release](https://img.shields.io/nuget/vpre/PI.ApplicationInsights.Hangfire.svg)
 
 Use this package if you want to monitor status for a Hangfire instance with Azure Application Insights.
 
@@ -12,7 +14,7 @@ The following metrics will be pushed to Azure Application Insights:
 - Servers
 
 ## Example of usage
-```
+```csharp
 HangfireMetric.Use(new HangfireMetricOptions
 {
     MetricPrefix = "hangfire",
@@ -50,7 +52,7 @@ If you use this package with a prefix called **hangfire** then you will get the 
 ## Azure Monitor Alert
 To setup an Azure Monitor Alert the following search query can be used as inspiration.
 
-````
+````sql
 customMetrics 
 | where name == "hangfire-failed" 
 | project AggregatedValue = value, bin(timestamp, 1m)  
